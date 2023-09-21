@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import com.airline.ticketbooking.exceptions.PassangerNotFoundException;
 import com.airline.ticketbooking.model.Passanger;
-import com.airline.ticketbooking.model.PassangerDto;
 import com.airline.ticketbooking.model.Role;
 import com.airline.ticketbooking.repository.PassangerRepository;
 import com.airline.ticketbooking.repository.RoleRepository;
@@ -64,7 +63,10 @@ public class PassangerService {
 		if(passangr.isPresent()) {
 			Passanger passangrs=passangr.get();
 			
-			passangrs.setName(passanger.getName());
+			passangrs.setFirstName(passanger.getFirstName());
+			passangrs.setLastName(passanger.getLastName());
+			passangrs.setAddress(passanger.getAddress());
+			passangrs.setPassword(passanger.getPassword());
 			passangrs.setGender(passanger.getGender());
 			passangrs.setPhoneNumber(passanger.getPhoneNumber());
 			passangrs.setEmail(passanger.getEmail());
@@ -151,7 +153,7 @@ public class PassangerService {
 	}
 	
 	
-	public PassangerDto addPassanger(PassangerDto pasaangerDto) {
+	/*public PassangerDto addPassanger(PassangerDto pasaangerDto) {
 		pasaangerDto.setPassword(passwordencoder.encode(pasaangerDto.getPassword()));
 		Passanger passanger = new Passanger();
 		mapDtoToEntity(pasaangerDto, passanger);
@@ -195,6 +197,6 @@ public class PassangerService {
 		responseDto.setNationality(passanger.getNationality());
 		responseDto.setRoles(passanger.getRoles().stream().map(Role::getRole).collect(Collectors.toSet()));
 		return responseDto;
-	}
+	}*/
 	 
 }

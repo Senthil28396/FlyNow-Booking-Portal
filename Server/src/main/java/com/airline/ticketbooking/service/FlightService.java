@@ -26,14 +26,14 @@ public class FlightService {
 	@Autowired
 	FlightRepository flightRepository;
 	
-	public void addFlight(Flight flight)
+	/*public void addFlight(Flight flight)
 	{
 		LocalTime depatureTime=flight.getDepatureTime();
 		LocalTime arrivalTime=flight.getArrivalTime();
 		String difference=timeDiff(depatureTime,arrivalTime);
 	    flight.setDuration(difference);
 		flightRepository.save(flight);
-	}
+	}*/
 	
 	public Flight getFlight(int id)
 	{
@@ -56,7 +56,7 @@ public class FlightService {
 			throw new PassangerNotFoundException("no flight records found");
 		}
 	}
-	public void updateFlight(Flight flight,int id) {
+	/*public void updateFlight(Flight flight,int id) {
 		Optional<Flight> fly=flightRepository.findById(id);
 		if(fly.isPresent()) {
 			Flight flights=fly.get();
@@ -78,7 +78,7 @@ public class FlightService {
 		{
 			throw new FlightNotFoundException("not found flight id:"+id);
 		}
-	}
+	}*/
 	public void deleteFlight(int id) {
 		Optional<Flight> flight=flightRepository.findById(id);
 		if(flight.isPresent()) {

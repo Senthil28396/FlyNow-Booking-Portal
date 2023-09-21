@@ -25,7 +25,7 @@ public class PassangerUserDetails implements UserDetails {
     private List<GrantedAuthority> authorities;
 
     public PassangerUserDetails(Passanger passanger) {
-        name=passanger.getName();
+//        name=passanger.getName();
         password=passanger.getPassword();
         String s="";
         Set<Role> roleString=passanger.getRoles();

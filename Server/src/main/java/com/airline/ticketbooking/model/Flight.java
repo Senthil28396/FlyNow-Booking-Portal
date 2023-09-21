@@ -1,5 +1,6 @@
 package com.airline.ticketbooking.model;
 
+import java.security.Timestamp;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,32 +24,19 @@ public class Flight {
 	@Column(nullable = false,unique = true)
 	private String flightNumber;
 	private String flightName;
-	private String flightType;// international or domestic
-	private String source;
-	private String destination;
-	private LocalDate depatureDate;
-	private LocalDate arrivalDate;
-	private LocalTime depatureTime;
-	private LocalTime arrivalTime;
-	private String duration;
-	private int availableSeats;
+	private int totalSeats;
+	private boolean status;
+	private Timestamp createdAt;
 
-	public Flight(int id,String flightNumber, String flightName, String flightType, String source, String destination,
-			LocalDate depatureDate, LocalDate arrivalDate, String duration, LocalTime depatureTime, LocalTime arrivalTime,
-			int availableSeats) {
+	public Flight(int id, String flightNumber, String flightName, String flightType, int totalSeats, boolean status,
+			Timestamp createdAt) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.flightNumber = flightNumber;
 		this.flightName = flightName;
-		this.flightType = flightType;
-		this.source = source;
-		this.destination = destination;
-		this.depatureDate = depatureDate;
-		this.arrivalDate = arrivalDate;
-		this.duration = duration;
-		this.depatureTime = depatureTime;
-		this.arrivalTime = arrivalTime;
-		this.availableSeats = availableSeats;
+		this.totalSeats = totalSeats;
+		this.status = status;
+		this.createdAt = createdAt;
 	}
 
 	public Flight() {
@@ -79,76 +67,29 @@ public class Flight {
 		this.flightName = flightName;
 	}
 
-	public String getFlightType() {
-		return flightType;
+	public int getTotalSeats() {
+		return totalSeats;
 	}
 
-	public void setFlightType(String flightType) {
-		this.flightType = flightType;
+	public void setTotalSeats(int totalSeats) {
+		this.totalSeats = totalSeats;
 	}
 
-	public String getSource() {
-		return source;
+	public boolean isStatus() {
+		return status;
 	}
 
-	public void setSource(String source) {
-		this.source = source;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
-	public String getDestination() {
-		return destination;
+	public Timestamp getCreatedAt() {
+		return createdAt;
 	}
 
-	public void setDestination(String destination) {
-		this.destination = destination;
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	public LocalDate getDepatureDate() {
-		return depatureDate;
-	}
-
-	public void setDepatureDate(LocalDate depatureDate) {
-		this.depatureDate = depatureDate;
-	}
-
-	public LocalDate getArrivalDate() {
-		return arrivalDate;
-	}
-
-	public void setArrivalDate(LocalDate arrivalDate) {
-		this.arrivalDate = arrivalDate;
-	}
-
-	public String getDuration() {
-		return duration;
-	}
-
-	public void setDuration(String difference) {
-		this.duration = difference;
-	}
-
-	public LocalTime getDepatureTime() {
-		return depatureTime;
-	}
-
-	public void setDepatureTime(LocalTime depatureTime) {
-		this.depatureTime = depatureTime;
-	}
-
-	public LocalTime getArrivalTime() {
-		return arrivalTime;
-	}
-
-	public void setArrivalTime(LocalTime arrivalTime) {
-		this.arrivalTime = arrivalTime;
-	}
-
-	public int getAvailableSeats() {
-		return availableSeats;
-	}
-
-	public void setAvailableSeats(int availableSeats) {
-		this.availableSeats = availableSeats;
-	}
-
+	
 }
