@@ -7,9 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.airline.ticketbooking.exceptions.CategoryNotFoundException;
 import com.airline.ticketbooking.exceptions.ReservationNotFoundException;
-import com.airline.ticketbooking.model.Category;
 import com.airline.ticketbooking.model.Reservation;
 import com.airline.ticketbooking.repository.ReservationRepository;
 

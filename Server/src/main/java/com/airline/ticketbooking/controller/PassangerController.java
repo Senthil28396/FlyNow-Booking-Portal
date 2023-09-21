@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airline.ticketbooking.model.Passanger;
-import com.airline.ticketbooking.model.PassangerDto;
 import com.airline.ticketbooking.service.PassangerService;
 
 @RestController
@@ -32,11 +31,11 @@ public class PassangerController {
 	@Autowired
 	PasswordEncoder encoder;
 	
-	@PostMapping("/add")
-	public String addPassanger(@RequestBody PassangerDto passanger) {
-		passangerService.addPassanger(passanger);
-		return "Added Passanger Details successfully";
-	}
+//	@PostMapping("/add")
+//	public String addPassanger(@RequestBody PassangerDto passanger) {
+//		passangerService.addPassanger(passanger);
+//		return "Added Passanger Details successfully";
+//	}
 	
 	@GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_ADMIN') or hasAuthority('ROLE_USER')")

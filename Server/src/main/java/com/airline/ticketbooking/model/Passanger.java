@@ -28,7 +28,8 @@ public class Passanger {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
+	private String firstName;
+	private String lastName;
 	private String gender;
 	private String phoneNumber;
 	@JsonProperty(access = Access.WRITE_ONLY)
@@ -36,6 +37,7 @@ public class Passanger {
 	@Column(unique = true,nullable = false)
 	private String email;
 	private int age;
+	private String address;
 	@Column(unique = true)
 	private String passportNumber;
 	private String nationality;
@@ -54,18 +56,25 @@ public class Passanger {
 	@OneToMany(mappedBy = "passanger")
 	private List<Reservation> reservation;
 	
-	public Passanger(Long id, String name, String gender, String phoneNumber, String password, String email, int age,
-			String passportNumber, String nationality) {
+	
+
+	public Passanger(Long id, String firstName, String lastName, String gender, String phoneNumber, String password,
+			String email, int age, String address, String passportNumber, String nationality, String token,
+			LocalDateTime tokenCreationDate) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.gender = gender;
 		this.phoneNumber = phoneNumber;
 		this.password = password;
 		this.email = email;
 		this.age = age;
+		this.address = address;
 		this.passportNumber = passportNumber;
 		this.nationality = nationality;
+		this.token = token;
+		this.tokenCreationDate = tokenCreationDate;
 	}
 
 	public Passanger() {
@@ -80,12 +89,28 @@ public class Passanger {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getGender() {
@@ -192,7 +217,7 @@ public class Passanger {
 	
     public void addReservation(Reservation review) {
         this.reservation.add(review);
-        review.setPassanger(this);
+//        review.setPassanger(this);
     }
 
 

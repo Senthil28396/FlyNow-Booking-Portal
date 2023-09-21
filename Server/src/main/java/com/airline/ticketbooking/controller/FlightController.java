@@ -27,7 +27,7 @@ public class FlightController {
 	
 	@PostMapping
 	public String addFlight(@RequestBody Flight flight) {
-		flightService.addFlight(flight);
+//		flightService.addFlight(flight);
 		return "Added Flight Details successfully";
 	}
 	@GetMapping("/{id}")
@@ -44,7 +44,7 @@ public class FlightController {
     //@PreAuthorize("hasAuthority('ROLE_USER')")
 	public String updateFlight(@RequestBody Flight flight,@PathVariable int id)
 	{
-		flightService.updateFlight(flight,id);
+//		flightService.updateFlight(flight,id);
 		return "updated successfully";
 	}
 	@DeleteMapping("/{id}")
