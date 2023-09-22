@@ -3,10 +3,15 @@ package com.airline.ticketbooking.model;
 import java.security.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 @Entity
 public class Trip {
 	
@@ -24,6 +29,15 @@ public class Trip {
 	private boolean status;
 	private int pricePerSeat;
 	private Timestamp createAt;
+	
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="trip_id")
+	private List<Reservation> reservation;
+
+	@ManyToMany(mappedBy="trips")
+	private List<Passanger> passengers;
+
 	
 	public Trip() {
 		super();
