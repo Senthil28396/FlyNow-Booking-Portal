@@ -5,8 +5,8 @@ const AppInput = ({
   type = "text",
   name,
   label,
-  required,
   helper,
+  required,
   className,
   divClassName,
   labelClassName,
@@ -26,7 +26,7 @@ const AppInput = ({
         className={clsx(labelClassName && `${labelClassName}`)}
       >
         {`${_.capitalize(label)}`}
-        {required && <span>*</span>}
+        {required && <span className="text-red-600 ml-[3px]">*</span>}
       </label>
       <input
         type={type}
@@ -37,7 +37,9 @@ const AppInput = ({
         className={clsx(className && `${className}`)}
       />
       {helper && <span>{_.capitalize(helper)}</span>}
-      <ErrorMessage name={name}>{error => <span>{error}</span>}</ErrorMessage>
+      <ErrorMessage name={name}>
+        {error => <small className="text-red-600">{error}</small>}
+      </ErrorMessage>
     </div>
   );
 };

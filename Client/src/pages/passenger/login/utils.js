@@ -4,12 +4,6 @@ export const initialValues = {
   password: "",
 };
 export const validation = yup.object({
-  username: yup
-    .string()
-    .required("username is required")
-    .trim("no whitespace allowed"),
-  password: yup
-    .string()
-    .required("password is required")
-    .trim("no whitespace allowed"),
+  username: yup.string().required("username must not be empty").trim(),
+  password: yup.string().required("password must not be empty").trim(),
 });

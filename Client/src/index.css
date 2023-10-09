@@ -7,3 +7,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.active {
+  border-bottom: 1.75px solid white;
+}

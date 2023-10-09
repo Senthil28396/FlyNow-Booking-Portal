@@ -16,13 +16,17 @@ export const useGetPassangerQuery = id =>
   });
 
 // loggin custom hook
-export const useLoginPassangerMutation = body =>
-  useMutation({
-    mutationFn: () => login(body),
+export const useLoginPassangerMutation = () => {
+  return useMutation({
+    mutationFn: async () => {
+      console.log("working fine");
+      return null;
+    },
     onSuccess: responseData => {
       localStorage.setItem("token", responseData);
     },
   });
+};
 
 // registering custom hook
 export const useCreatePassangerMutation = body => {
