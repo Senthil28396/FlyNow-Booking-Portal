@@ -4,7 +4,7 @@ import DashboardHeader from "../../../components/dashboardHeader/Dashboard";
 const AdminDashboardPassengers = () => {
   const [passangers, setPassangers] = useState([]);
   useEffect(() => {
-    getAll().then(response => {
+    getAll().then((response) => {
       console.log({ response });
       setPassangers(() => [...response]);
     });
@@ -14,7 +14,7 @@ const AdminDashboardPassengers = () => {
       <DashboardHeader
         sectionClass="flex justify-between p-4"
         buttonLabel="add passangers"
-        to="/admin/passangers/add"
+        to="/passagers/signup"
         title="list of passangers"
         buttonClass="bg-indigo-600 text-white px-8 py-2 rounded-sm"
       />

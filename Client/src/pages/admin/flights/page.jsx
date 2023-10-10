@@ -4,7 +4,7 @@ import DashboardHeader from "../../../components/dashboardHeader/Dashboard";
 const AdminDashboardFlights = () => {
   const [flights, setFlights] = useState([]);
   useEffect(() => {
-    getAll().then(response => {
+    getAll().then((response) => {
       console.log({ response });
       setFlights(() => [...response]);
     });

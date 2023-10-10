@@ -44,8 +44,8 @@ const AddFlightForm = ({ values = addFlightInitialValue, onSubmit }) => {
               <div className="col-span-full  flex justify-center">
                 <input
                   type="submit"
-                  value="signup"
-                  className="bg-indigo-600 text-white px-10 rounded capitalize  disabled:bg-indigo-400"
+                  value="add Flight"
+                  className="bg-indigo-600 text-white px-6 h-12 rounded capitalize  disabled:bg-indigo-400"
                   disabled={isSubmitting || !dirty}
                 />
               </div>
