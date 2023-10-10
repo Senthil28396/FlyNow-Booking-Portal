@@ -4,6 +4,7 @@ import { clsx } from "clsx";
 import { useAuth } from "../../context/AuthContextProvider";
 const NavBar = ({ bg }) => {
   const { userAccessToken: token } = useAuth();
+  const role = localStorage.getItem("role");
   return (
     <header
       className={clsx(
@@ -29,9 +30,11 @@ const NavBar = ({ bg }) => {
             <NavLink to={"/passagers/search"} className="">
               search
             </NavLink>
-            <NavLink to={"/admin/dashboard"} className="">
-              dashboard
-            </NavLink>
+            {role === "admin" && (
+              <NavLink to={"/admin/dashboard"} className="">
+                dashboard
+              </NavLink>
+            )}
           </>
         ) : (
           <>

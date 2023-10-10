@@ -12,6 +12,16 @@ export const getOne = async id => {
   return data.data;
 };
 
+// getting only the single trip details by user details
+export const getByDetails = async ({ depature, arrival, arrivalDate }) => {
+  const [date] = new Date(arrivalDate).toISOString().split("T");
+  console.log({ date });
+  const data = await axios.get(
+    `/trips/search?departure=${depature}&arrival=${arrival}&arrivalDate=${date}`
+  );
+  return data.data;
+};
+
 // getting all the trips details
 export const getAll = async () => {
   const data = await axios.get("/trips");

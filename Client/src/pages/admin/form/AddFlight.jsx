@@ -1,12 +1,8 @@
 import { Field, Form, Formik } from "formik";
-
 import { addFlightInitialValue, addFlightValidation } from "./utils";
 import NavBar from "../../../components/navbar/NavBar";
 import AppInput from "../../../components/input/AppInput";
-// import useQuery from "../../../hooks/useQuery";
-// import { login } from "../../../api/passengers/fetchers";
 const AddFlightForm = ({ values = addFlightInitialValue, onSubmit }) => {
-  // const { data, error } = useQuery(login);
   return (
     <div>
       <NavBar bg />

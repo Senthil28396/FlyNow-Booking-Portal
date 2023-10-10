@@ -20,6 +20,9 @@ const TripRegisterPage = lazy(() => import("../../pages/admin/trips/add/page"));
 const FlightRegisterPage = lazy(() =>
   import("../../pages/admin/flights/add/page")
 );
+const SearchFlightsPage = lazy(() =>
+  import("../../pages/passenger/search/page")
+);
 const AppRoutes = () => {
   return (
     <Router>
@@ -45,6 +48,14 @@ const AppRoutes = () => {
           element={
             <SuspenseWrapper>
               <PassengerRegisterPage />
+            </SuspenseWrapper>
+          }
+        />
+        <Route
+          path="/passagers/search"
+          element={
+            <SuspenseWrapper>
+              <SearchFlightsPage />
             </SuspenseWrapper>
           }
         />

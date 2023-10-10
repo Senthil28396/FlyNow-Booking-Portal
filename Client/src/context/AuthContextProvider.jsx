@@ -10,11 +10,12 @@ const userTokenContext = createContext(null);
 const AuthContext = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   useEffect(() => {
-    console.log({ currentUserToken: token });
+    console.log({ currentUserToken: `Bearear - ${token}` });
   }, [token]);
-  const login = useCallback(userToken => {
-    setToken(userToken);
+  const login = useCallback(({ token: userToken, isAdmin }) => {
     localStorage.setItem("token", userToken);
+    localStorage.setItem("role", isAdmin ? "admin" : "user");
+    setToken(userToken);
   }, []);
   const logout = useCallback(() => {
     setToken(null);
