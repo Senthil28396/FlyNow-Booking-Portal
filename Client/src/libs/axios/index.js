@@ -6,6 +6,7 @@ const requestInterceptor = async request => {
     request.headers.set("Authorization", userAccessToken);
   }
   request.headers.Accept = "application/json";
+  request.headers['Access-Control-Allow-Origin'] = '*'
   return request;
 };
 

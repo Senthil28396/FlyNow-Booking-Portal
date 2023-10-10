@@ -3,14 +3,22 @@ import Navbar from "../../../components/navbar/NavBar";
 import AppInput from "../../../components/input/AppInput";
 import { initialValues, validation } from "./utils";
 import RadioGroup from "../../../components/radio/Radio";
-// import useQuery from "../../../hooks/useQuery";
-// import { login } from "../../../api/passengers/fetchers";
+import { create } from "../../../api/passengers/fetchers";
+import { useNavigate } from "react-router-dom";
 const PassengerRegisterPage = () => {
-  // const { data, error } = useQuery(login);
+  const navigator = useNavigate();
+
   const handleSubmit = async (values, actions) => {
-    console.log({ values, actions });
-    actions.resetForm();
-    return null;
+    console.log("working");
+    try {
+      const response = await create(values);
+      actions.resetForm();
+      alert(response);
+      return navigator("/passagers/login");
+    } catch (err) {
+      alert(err.message);
+      return null;
+    }
   };
   return (
     <div>
@@ -46,7 +54,7 @@ const PassengerRegisterPage = () => {
                 name="email"
               />
               <AppInput
-                label={"mobile"}
+                label={"PhoneNumber"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
                 className="h-10 rounded-sm px-2 focus:outline-indigo-500"
@@ -76,7 +84,7 @@ const PassengerRegisterPage = () => {
                 name="address"
               />
               <AppInput
-                label={"passport Number"}
+                label={"passportNumber"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
                 className="h-10 rounded-sm px-2 focus:outline-indigo-500"
@@ -100,7 +108,7 @@ const PassengerRegisterPage = () => {
                 <input
                   type="submit"
                   value="signup"
-                  className="bg-indigo-600 text-white px-10 rounded capitalize py-2 disabled:bg-indigo-400"
+                  className="bg-indigo-600 text-white px-14 rounded capitalize h-12 disabled:bg-indigo-400"
                   disabled={isSubmitting}
                 />
               </div>

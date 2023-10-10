@@ -2,14 +2,21 @@ import { Form, Formik } from "formik";
 import Navbar from "../../../components/navbar/NavBar";
 import AppInput from "../../../components/input/AppInput";
 import { initialValues, validation } from "./utils";
-// import useQuery from "../../../hooks/useQuery";
-// import { login } from "../../../api/passengers/fetchers";
+import { login } from "../../../api/passengers/fetchers";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContextProvider";
 const PassengerLoginPage = () => {
-  // const { data, error } = useQuery(login);
+  const navigate = useNavigate();
+  const { login: loginUser } = useAuth();
   const handleSubmit = async (values, actions) => {
-    console.log({ values });
-    actions.resetForm();
-    return null;
+    try {
+      const token = await login(values);
+      loginUser(token);
+      actions.resetForm();
+      navigate("/");
+    } catch (error) {
+      alert(error);
+    }
   };
   return (
     <div>
@@ -23,11 +30,11 @@ const PassengerLoginPage = () => {
           {({ isSubmitting }) => (
             <Form className="rounded-md shadow-md shadow-gray-200 flex flex-col gap-2 py-10 px-5  h-[70vh] w-[40vw]">
               <AppInput
-                label={"username"}
+                label={"email"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
                 className="h-10 rounded-sm px-2 focus:outline-indigo-500"
-                name="username"
+                name="email"
               />
               <AppInput
                 label={"password"}

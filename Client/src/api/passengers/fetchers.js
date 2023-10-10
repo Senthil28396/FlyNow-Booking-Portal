@@ -8,7 +8,8 @@ export const create = async body => {
 
 // logging  the current passanger into the app
 export const login = async body => {
-  const data = await axios.post("/passangers/login", body);
+  console.log(body)
+  const data = await axios.post("passangers/login", body);
   return data.data;
 };
 

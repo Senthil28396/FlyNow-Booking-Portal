@@ -10,7 +10,6 @@ export const initialValues = {
   address: "",
   passportNumber: "",
   nationality: "",
-  role: "ADMIN",
 };
 export const validation = yup.object({
   firstName: yup.string().required("fill this field"),
@@ -18,7 +17,7 @@ export const validation = yup.object({
   gender: yup
     .string()
     .required("fill this field")
-    .oneOf(["male", "female", "others"]),
+    .oneOf(["male", "female", "others"],"invalid gender"),
   phoneNumber: yup
     .string()
     .required("fill this field")
@@ -32,5 +31,4 @@ export const validation = yup.object({
   address: yup.string().required("fill this field"),
   passportNumber: yup.string().required("fill this field"),
   nationality: yup.string().required("fill this field"),
-  role: yup.string().required("fill this field").oneOf(["ADMIN"]),
 });
