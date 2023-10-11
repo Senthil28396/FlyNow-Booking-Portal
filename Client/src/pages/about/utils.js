@@ -1,0 +1,3 @@
+const cartContent = {
+  content: "Navbar",
+};

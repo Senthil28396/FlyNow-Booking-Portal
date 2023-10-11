@@ -33,6 +33,7 @@ const DashboardAdminProfile = lazy(() =>
 const BookingListPage = lazy(() =>
   import("../../pages/passenger/bookings/page")
 );
+const AboutPage = lazy(() => import("../../pages/about/page"));
 const AppRoutes = () => {
   return (
     <Router>
@@ -42,6 +43,14 @@ const AppRoutes = () => {
           element={
             <SuspenseWrapper>
               <HomePage />
+            </SuspenseWrapper>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <SuspenseWrapper>
+              <AboutPage />
             </SuspenseWrapper>
           }
         />

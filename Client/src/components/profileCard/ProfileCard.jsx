@@ -8,9 +8,9 @@ const ProfileCard = () => {
     try {
       logout();
       alert("You have been logged out");
-      navigate("/");
+      return navigate("/");
     } catch (error) {
-      alert("Couldn't log out");
+      return alert("Couldn't log out");
     }
   };
 
