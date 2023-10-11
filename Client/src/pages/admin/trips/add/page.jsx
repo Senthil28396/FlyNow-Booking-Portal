@@ -1,10 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import AddTripForm from "../../form/AddTrip";
+import { create } from "../../../../api/trips/fetchers";
 
 const TripRegister = () => {
-  const handleSubmit = async (values, actions) => {
-    console.log({ values });
-    actions.resetForm();
-    return null;
+  const navigate = useNavigate();
+  const handleSubmit = async (values, actions, id) => {
+    try {
+      await create({ ...values, flight: { id } });
+      actions.resetForm();
+      return navigate("/admin/dashboard/trips");
+    } catch (error) {
+      alert(error.message);
+      return null;
+    }
   };
   return (
     <>

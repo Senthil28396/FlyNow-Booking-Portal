@@ -23,6 +23,9 @@ const FlightRegisterPage = lazy(() =>
 const SearchFlightsPage = lazy(() =>
   import("../../pages/passenger/search/page")
 );
+const PassengerEditPage = lazy(() =>
+  import("../../pages/admin/flights/edit/page")
+);
 const AppRoutes = () => {
   return (
     <Router>
@@ -60,7 +63,7 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path="/admin/trips/add"
+          path="/admin/trips/:tripId/add"
           element={
             <SuspenseWrapper>
               <TripRegisterPage />
@@ -72,6 +75,14 @@ const AppRoutes = () => {
           element={
             <SuspenseWrapper>
               <FlightRegisterPage />
+            </SuspenseWrapper>
+          }
+        />
+        <Route
+          path="/admin/flights/:flightId/edit"
+          element={
+            <SuspenseWrapper>
+              <PassengerEditPage />
             </SuspenseWrapper>
           }
         />

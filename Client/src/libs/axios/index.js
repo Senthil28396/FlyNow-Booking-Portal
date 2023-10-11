@@ -3,7 +3,7 @@ import axiosClient from "axios";
 const requestInterceptor = async request => {
   const userAccessToken = localStorage.getItem("token");
   if (userAccessToken) {
-    request.headers.set("Authorization", userAccessToken);
+    request.headers.set("Authorization", `Bearer ${userAccessToken}`);
   }
   request.headers.Accept = "application/json";
   request.headers['Access-Control-Allow-Origin'] = '*'

@@ -1,6 +1,6 @@
 import { capitalize } from "lodash";
 
-const Row = ({ data }) => {
+const Row = ({ data, hasAction, render }) => {
   const columnCount = Object.keys(data[0]).length;
   const headerColumns = Object.keys(data[0]);
   console.log({ columnCount, headerColumns });
@@ -16,6 +16,7 @@ const Row = ({ data }) => {
               {capitalize(val)}
             </th>
           ))}
+          {hasAction && <th>Actions</th>}
         </tr>
       </thead>
       <tbody className="block w-full text-left">
@@ -24,11 +25,17 @@ const Row = ({ data }) => {
             key={index}
             className="flex items-center px-2 my-2 shadow-sm even:bg-slate-300 odd:bg-indigo-300 py-2"
           >
-            {headerColumns.map(column => (
-              <th className="flex-1 font-normal text-ellipsis whitespace-nowrap overflow-hidden">
-                {capitalize(row[column])}
-              </th>
+            {headerColumns.map((column) => (
+              <td
+                className="flex-1 font-normal text-ellipsis whitespace-nowrap overflow-hidden"
+                key={column}
+              >
+                {typeof row[column] === "object"
+                  ? row[column]?.id
+                  : capitalize(row[column]) || "..."}
+              </td>
             ))}
+            {hasAction && <td>{render(row)}</td>}
           </tr>
         ))}
       </tbody>

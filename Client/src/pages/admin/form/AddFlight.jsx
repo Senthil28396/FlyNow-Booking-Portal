@@ -2,7 +2,12 @@ import { Field, Form, Formik } from "formik";
 import { addFlightInitialValue, addFlightValidation } from "./utils";
 import NavBar from "../../../components/navbar/NavBar";
 import AppInput from "../../../components/input/AppInput";
-const AddFlightForm = ({ values = addFlightInitialValue, onSubmit }) => {
+const AddFlightForm = ({
+  values = addFlightInitialValue,
+  onSubmit,
+  buttonLabel,
+}) => {
+  console.log({ form: values });
   return (
     <div>
       <NavBar bg />
@@ -11,6 +16,7 @@ const AddFlightForm = ({ values = addFlightInitialValue, onSubmit }) => {
           initialValues={values}
           validationSchema={addFlightValidation}
           onSubmit={onSubmit}
+          enableReinitialize
         >
           {({ isSubmitting, dirty }) => (
             <Form className="grid w-[340px] mx-auto gap-x-8">
@@ -44,7 +50,7 @@ const AddFlightForm = ({ values = addFlightInitialValue, onSubmit }) => {
               <div className="col-span-full  flex justify-center">
                 <input
                   type="submit"
-                  value="add Flight"
+                  value={buttonLabel}
                   className="bg-indigo-600 text-white px-6 h-12 rounded capitalize  disabled:bg-indigo-400"
                   disabled={isSubmitting || !dirty}
                 />

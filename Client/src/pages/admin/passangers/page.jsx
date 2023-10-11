@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAll } from "../../../api/passengers/fetchers";
 import DashboardHeader from "../../../components/dashboardHeader/Dashboard";
 const AdminDashboardPassengers = () => {

@@ -3,11 +3,11 @@ import { Field, Form, Formik } from "formik";
 import { addTripInitialValue, validation } from "./utils";
 import NavBar from "../../../components/navbar/NavBar";
 import AppInput from "../../../components/input/AppInput";
+import { useParams } from "react-router-dom";
 // import useQuery from "../../../hooks/useQuery";
 // import { login } from "../../../api/passengers/fetchers";
 const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
-  // const { data, error } = useQuery(login);
-  console.log({ values });
+  const { tripId } = useParams();
   return (
     <div>
       <NavBar bg />
@@ -15,7 +15,7 @@ const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
         <Formik
           initialValues={values}
           validationSchema={validation}
-          onSubmit={onSubmit}
+          onSubmit={(values, actions) => onSubmit(values, actions, tripId)}
         >
           {({ isSubmitting, dirty }) => (
             <Form className="grid grid-cols-3 gap-x-8">
@@ -64,22 +64,6 @@ const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
                 type="time"
                 className="h-10 rounded-sm px-2 focus:outline-indigo-500"
                 name="arrivalTime"
-              />{" "}
-              <AppInput
-                label={"duration"}
-                type="number"
-                divClassName="flex flex-col  h-[100px] gap-2 "
-                required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
-                name="duration"
-              />
-              <AppInput
-                label={"availableSeats"}
-                type="number"
-                divClassName="flex flex-col  h-[100px] gap-2 "
-                required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
-                name="availableSeats"
               />
               <AppInput
                 label={"pricePerSeat"}
@@ -89,7 +73,7 @@ const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
                 className="h-10 rounded-sm px-2 focus:outline-indigo-500"
                 name="pricePerSeat"
               />
-              <label htmlFor="status">
+              <label htmlFor="status" className="">
                 <Field id="status" name="status" type="checkbox" />
                 <span className="ml-[3px]"> Status</span>
               </label>
@@ -97,7 +81,7 @@ const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
                 <input
                   type="submit"
                   value="signup"
-                  className="bg-indigo-600 text-white px-10 rounded capitalize  disabled:bg-indigo-400"
+                  className="bg-indigo-600 text-white px-12 rounded capitalize h-12 disabled:bg-indigo-400"
                   disabled={isSubmitting || !dirty}
                 />
               </div>
