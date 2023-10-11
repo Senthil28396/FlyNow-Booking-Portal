@@ -6,7 +6,11 @@ import AppInput from "../../../components/input/AppInput";
 import { useParams } from "react-router-dom";
 // import useQuery from "../../../hooks/useQuery";
 // import { login } from "../../../api/passengers/fetchers";
-const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
+const AddTripForm = ({
+  values = addTripInitialValue,
+  onSubmit,
+  buttonLabel,
+}) => {
   const { tripId } = useParams();
   return (
     <div>
@@ -14,6 +18,7 @@ const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
       <main className="bg-gray-200 grid p-16 h-[calc(100vh-50px)]">
         <Formik
           initialValues={values}
+          enableReinitialize
           validationSchema={validation}
           onSubmit={(values, actions) => onSubmit(values, actions, tripId)}
         >
@@ -80,7 +85,7 @@ const AddTripForm = ({ values = addTripInitialValue, onSubmit }) => {
               <div className="col-span-full  flex justify-center">
                 <input
                   type="submit"
-                  value="signup"
+                  value={buttonLabel}
                   className="bg-indigo-600 text-white px-12 rounded capitalize h-12 disabled:bg-indigo-400"
                   disabled={isSubmitting || !dirty}
                 />

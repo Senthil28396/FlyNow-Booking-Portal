@@ -20,6 +20,7 @@ const AuthContext = ({ children }) => {
   const logout = useCallback(() => {
     setToken(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
   }, []);
   return (
     <userTokenContext.Provider

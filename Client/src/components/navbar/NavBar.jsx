@@ -24,16 +24,19 @@ const NavBar = ({ bg }) => {
         </NavLink>
         {token ? (
           <>
-            <NavLink to={"/passagers/bookings"} className="">
-              bookings
-            </NavLink>
-            <NavLink to={"/passagers/search"} className="">
-              search
-            </NavLink>
-            {role === "admin" && (
+            {role === "admin" ? (
               <NavLink to={"/admin/dashboard"} className="">
                 dashboard
               </NavLink>
+            ) : (
+              <>
+                <NavLink to={"/passagers/bookings"} className="">
+                  bookings
+                </NavLink>
+                <NavLink to={"/passagers/search"} className="">
+                  search
+                </NavLink>
+              </>
             )}
           </>
         ) : (

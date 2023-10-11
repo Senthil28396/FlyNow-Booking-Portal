@@ -7,7 +7,6 @@ const AddFlightForm = ({
   onSubmit,
   buttonLabel,
 }) => {
-  console.log({ form: values });
   return (
     <div>
       <NavBar bg />

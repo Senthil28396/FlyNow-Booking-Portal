@@ -26,7 +26,7 @@ const AdminDashboardFlights = () => {
           buttonLabel="add flight"
           to="/admin/flights/add"
           title="list of Flights"
-          buttonClass="bg-indigo-600 text-white px-8 py-2 rounded-sm"
+          buttonClass="bg-indigo-600 text-white px-8 py-2  rounded-sm"
         />
         {flights.length ? (
           <Table

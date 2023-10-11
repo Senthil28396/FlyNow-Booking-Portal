@@ -21,7 +21,7 @@ export const getOne = async id => {
 
 // getting all the passangers details
 export const getAll = async () => {
-  const data = await axios.get("/passangers");
+  const data = await axios.get("/passangers/get");
   return data.data;
 };
 

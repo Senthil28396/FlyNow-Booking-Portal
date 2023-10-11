@@ -16,7 +16,11 @@ const Row = ({ data, hasAction, render }) => {
               {capitalize(val)}
             </th>
           ))}
-          {hasAction && <th>Actions</th>}
+          {hasAction && (
+            <th className="flex-1 text-ellipsis whitespace-nowrap overflow-hidden text-center">
+              Actions
+            </th>
+          )}
         </tr>
       </thead>
       <tbody className="block w-full text-left">
@@ -31,11 +35,15 @@ const Row = ({ data, hasAction, render }) => {
                 key={column}
               >
                 {typeof row[column] === "object"
-                  ? row[column]?.id
+                  ? row[column]?.flightNumber ?? row[column]?.id
                   : capitalize(row[column]) || "..."}
               </td>
             ))}
-            {hasAction && <td>{render(row)}</td>}
+            {hasAction && (
+              <td className="flex-1 font-normal text-ellipsis whitespace-nowrap overflow-hidden">
+                {render(row)}
+              </td>
+            )}
           </tr>
         ))}
       </tbody>

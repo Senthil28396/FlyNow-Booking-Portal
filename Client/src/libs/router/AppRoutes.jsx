@@ -23,8 +23,15 @@ const FlightRegisterPage = lazy(() =>
 const SearchFlightsPage = lazy(() =>
   import("../../pages/passenger/search/page")
 );
-const PassengerEditPage = lazy(() =>
+const FlightEditPage = lazy(() =>
   import("../../pages/admin/flights/edit/page")
+);
+const TripEditPage = lazy(() => import("../../pages/admin/trips/edit/page"));
+const DashboardAdminProfile = lazy(() =>
+  import("../../pages/admin/profile/page")
+);
+const BookingListPage = lazy(() =>
+  import("../../pages/passenger/bookings/page")
 );
 const AppRoutes = () => {
   return (
@@ -63,6 +70,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path="/passagers/bookings"
+          element={
+            <SuspenseWrapper>
+              <BookingListPage />
+            </SuspenseWrapper>
+          }
+        />
+        <Route
           path="/admin/trips/:tripId/add"
           element={
             <SuspenseWrapper>
@@ -82,7 +97,15 @@ const AppRoutes = () => {
           path="/admin/flights/:flightId/edit"
           element={
             <SuspenseWrapper>
-              <PassengerEditPage />
+              <FlightEditPage />
+            </SuspenseWrapper>
+          }
+        />
+        <Route
+          path="/admin/trips/:tripId/edit"
+          element={
+            <SuspenseWrapper>
+              <TripEditPage />
             </SuspenseWrapper>
           }
         />
@@ -115,6 +138,14 @@ const AppRoutes = () => {
             element={
               <SuspenseWrapper>
                 <DashboardPassangersPage />
+              </SuspenseWrapper>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <SuspenseWrapper>
+                <DashboardAdminProfile />
               </SuspenseWrapper>
             }
           />
