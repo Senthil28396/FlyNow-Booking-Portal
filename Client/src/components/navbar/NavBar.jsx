@@ -16,37 +16,23 @@ const NavBar = ({ bg }) => {
         frenzo
       </h2>
       <nav className="flex gap-10">
-        <NavLink to={"/"} className="">
-          home
-        </NavLink>
-        <NavLink to={"/about"} className="">
-          about
-        </NavLink>
+        <NavLink to={"/"}>home</NavLink>
         {token ? (
           <>
             {role === "admin" ? (
-              <NavLink to={"/admin/dashboard"} className="">
-                dashboard
-              </NavLink>
+              <NavLink to={"/admin/dashboard"}>dashboard</NavLink>
             ) : (
               <>
-                <NavLink to={"/passagers/bookings"} className="">
-                  bookings
-                </NavLink>
-                <NavLink to={"/passagers/search"} className="">
-                  search
-                </NavLink>
+                <NavLink to={"/passagers/bookings"}>bookings</NavLink>
+                <NavLink to={"/passagers/search"}>search</NavLink>
+                <NavLink to={"/passagers/profile"}>profile</NavLink>
               </>
             )}
           </>
         ) : (
           <>
-            <NavLink to={"/passagers/signup"} className="">
-              signup
-            </NavLink>
-            <NavLink to={"/passagers/login"} className="">
-              login
-            </NavLink>
+            <NavLink to={"/passagers/signup"}>signup</NavLink>
+            <NavLink to={"/passagers/login"}>login</NavLink>
           </>
         )}
       </nav>

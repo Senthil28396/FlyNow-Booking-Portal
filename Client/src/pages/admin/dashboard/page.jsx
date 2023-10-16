@@ -7,7 +7,7 @@ const Dashboard = () => {
   return (
     <div>
       <NavBar bg />
-      <main className="flex  gap-1 m-1 bg-slate-200  h-[calc(100vh-90px)]">
+      <main className="flex  gap-1 mt-[2px] bg-slate-200  h-[calc(100vh-52px)]">
         <aside className="basis-56 border-r-2 px-4 py-4 flex text-slate-50 flex-col gap-4 bg-indigo-700">
           <h2 className="text-2xl font-bold tracking-wide uppercase">
             dashboard

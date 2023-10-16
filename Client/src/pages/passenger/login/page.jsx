@@ -19,16 +19,16 @@ const PassengerLoginPage = () => {
     }
   };
   return (
-    <div>
-      <Navbar bg />
-      <main className="bg-gray-200 grid place-content-center h-[calc(100vh-50px)]">
+    <div className="bg-flight bg-black/50 bg-blend-multiply">
+      <Navbar />
+      <main className=" grid place-content-center h-[calc(100vh-50px)]">
         <Formik
           initialValues={initialValues}
           validationSchema={validation}
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
-            <Form className="rounded-md shadow-md shadow-gray-200 flex flex-col gap-2 py-10 px-5  h-[70vh] w-[40vw]">
+            <Form className="rounded-md bg-white shadow  flex flex-col gap-2  py-10 px-5   w-[40vw]">
               <AppInput
                 label={"email"}
                 divClassName="flex flex-col  h-[100px] gap-2 "

@@ -3,7 +3,8 @@ import { useAuth } from "../../context/AuthContextProvider";
 import { useEffect, useState } from "react";
 import { getOne } from "../../api/passengers/fetchers";
 import _, { upperCase } from "lodash";
-const ProfileCard = () => {
+import clsx from "clsx";
+const ProfileCard = ({ sectionClass, containerClass }) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
@@ -35,7 +36,7 @@ const ProfileCard = () => {
   };
 
   return user ? (
-    <section>
+    <section className={`${clsx(sectionClass && sectionClass)}`}>
       <div className="flex justify-end pr-7">
         <button
           onClick={handleLogout}
@@ -44,7 +45,11 @@ const ProfileCard = () => {
           logout
         </button>
       </div>
-      <section className="bg-white w-[calc(100%-30px)] h-[470px] m-3  grid  gap-3 p-4 grid-cols-3">
+      <section
+        className={`w-[calc(100%-30px)] m-3  grid  gap-3 p-4 grid-cols-3 ${
+          containerClass && containerClass
+        }`}
+      >
         {Object.keys(user).map((key) => (
           <Box key={key} label={key} value={user[key] ?? ""} />
         ))}
@@ -58,10 +63,10 @@ export default ProfileCard;
 const Box = ({ label, value }) => {
   return (
     <div className="flex flex-col gap-2">
-      <h1 aria-describedby={label} className="font-semibold tracking-wide">
+      <h1 aria-describedby={label} className="font-bold  tracking-wide">
         {upperCase(label)}
       </h1>
-      <span id={label} className="ml-2">
+      <span id={label} className="ml-2 font-semibold">
         {upperCase(value)}
       </span>
     </div>

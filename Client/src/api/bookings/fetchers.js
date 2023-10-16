@@ -1,20 +1,15 @@
 import axios from "../../libs/axios/index";
 
 // registering a new reservation to passanger
-export const create = async body => {
+export const create = async (body) => {
   const data = await axios.post("/reservations", body);
-  return data.data;
-};
-
-// getting only the single reservation details
-export const getOne = async id => {
-  const data = await axios.get(`/reservations/${id}`);
   return data.data;
 };
 
 // getting all the reservations details
 export const getAll = async () => {
-  const data = await axios.get("/reservations");
+  const id = Number(localStorage.getItem("currentUserId"));
+  const data = await axios.get(`/reservations/${id}`);
   return data.data;
 };
 
@@ -25,7 +20,7 @@ export const update = async ({ id, ...body }) => {
 };
 
 // deleting the reservation details
-export const remove = async id => {
+export const remove = async (id) => {
   const data = await axios.delete(`/reservations/${id}`);
   return data.data;
 };

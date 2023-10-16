@@ -57,9 +57,9 @@ const AddTripForm = ({
               <AppInput
                 label={"depatureTime"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
                 required
                 type="time"
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
                 name="depatureTime"
               />
               <AppInput

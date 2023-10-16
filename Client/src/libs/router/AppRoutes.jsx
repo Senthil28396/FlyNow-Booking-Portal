@@ -34,6 +34,12 @@ const BookingListPage = lazy(() =>
   import("../../pages/passenger/bookings/page")
 );
 const AboutPage = lazy(() => import("../../pages/about/page"));
+const PassengerProfilePage = lazy(() =>
+  import("../../pages/passenger/profile/page")
+);
+const ReversationDetailsPage = lazy(() =>
+  import("../../pages/passenger/reservations/page")
+);
 const AppRoutes = () => {
   return (
     <Router>
@@ -63,6 +69,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path="/passagers/profile"
+          element={
+            <SuspenseWrapper>
+              <PassengerProfilePage />
+            </SuspenseWrapper>
+          }
+        />
+        <Route
           path="/passagers/signup"
           element={
             <SuspenseWrapper>
@@ -75,6 +89,14 @@ const AppRoutes = () => {
           element={
             <SuspenseWrapper>
               <SearchFlightsPage />
+            </SuspenseWrapper>
+          }
+        />
+        <Route
+          path="/flights/reservations/:tripId"
+          element={
+            <SuspenseWrapper>
+              <ReversationDetailsPage />
             </SuspenseWrapper>
           }
         />

@@ -2,23 +2,38 @@ import { Field, Form, Formik } from "formik";
 import Navbar from "../../../components/navbar/NavBar";
 import { validation, initialValue } from "./utils";
 import AppInput from "../../../components/input/AppInput";
-import { getByDetails } from "../../../api/trips/fetchers";
-import { useState } from "react";
+import { getByDetails, getAll } from "../../../api/trips/fetchers";
+import { useEffect, useState } from "react";
+import Table from "../../../components/table/Table";
+import _ from "lodash";
+import { Link } from "react-router-dom";
 const SearchFlightsPage = () => {
-  const [flighs, setFlights] = useState([]);
+  const [flights, setFlights] = useState([]);
+  useEffect(() => {
+    getAll().then((data) => {
+      const updatedData = data?.map((trip) =>
+        _.omit(trip, ["createAt", "status", "duration"])
+      );
+      setFlights(updatedData);
+    });
+  }, []);
   const handleSubmit = async (values, action) => {
     try {
       const data = await getByDetails(values);
-      console.log({ data });
+      const updatedData = data?.map((trip) =>
+        _.omit(trip, ["createAt", "status", "duration"])
+      );
+      setFlights(updatedData);
       action.resetForm();
     } catch (error) {
       return alert(error.message);
     }
   };
+  console.log({ flights });
   return (
-    <main>
+    <main className="bg-gray-200 h-screen">
       <Navbar bg />
-      <section>
+      <section className="my-2">
         <Formik
           onSubmit={handleSubmit}
           validationSchema={validation}
@@ -58,6 +73,24 @@ const SearchFlightsPage = () => {
           )}
         </Formik>
       </section>
+      {flights.length > 0 ? (
+        <Table
+          data={flights}
+          hasAction
+          render={(row) => (
+            <span className="flex justify-center">
+              <Link
+                to={`/flights/reservations/${row?.id}`}
+                className="bg-indigo-600 p-1 px-5 rounded text-white"
+              >
+                Book
+              </Link>
+            </span>
+          )}
+        />
+      ) : (
+        <h1>list of flight will be here..!</h1>
+      )}
     </main>
   );
 };

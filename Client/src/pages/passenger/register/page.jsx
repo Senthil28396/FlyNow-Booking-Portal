@@ -21,9 +21,9 @@ const PassengerRegisterPage = () => {
     }
   };
   return (
-    <div>
-      <Navbar bg />
-      <main className="bg-gray-200 grid p-16 h-[calc(100vh-50px)]">
+    <div className="bg-wing bg-cover bg-black/50 bg-blend-multiply text-white">
+      <Navbar />
+      <main className="grid p-16 h-[calc(100vh-50px)]">
         <Formik
           initialValues={initialValues}
           validationSchema={validation}
@@ -35,14 +35,14 @@ const PassengerRegisterPage = () => {
                 label={"firstName"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 name="firstName"
               />
               <AppInput
                 label={"lastName"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 name="lastName"
               />
               <AppInput
@@ -50,20 +50,20 @@ const PassengerRegisterPage = () => {
                 type="email"
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 name="email"
               />
               <AppInput
                 label={"PhoneNumber"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 name="phoneNumber"
               />
               <AppInput
                 label={"password"}
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 name="password"
                 type="password"
@@ -73,13 +73,13 @@ const PassengerRegisterPage = () => {
                 type="number"
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 name="age"
               />
               <AppInput
                 label={"address"}
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 name="address"
               />
@@ -87,13 +87,13 @@ const PassengerRegisterPage = () => {
                 label={"passportNumber"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 name="passportNumber"
               />
               <AppInput
                 label={"nationality"}
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 text-black"
                 divClassName="flex flex-col  h-[100px] gap-2"
                 name="nationality"
               />
