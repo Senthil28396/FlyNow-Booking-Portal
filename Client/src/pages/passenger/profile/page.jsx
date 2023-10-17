@@ -1,6 +1,5 @@
 import NavBar from "../../../components/navbar/NavBar";
 import ProfileCard from "../../../components/profileCard/ProfileCard";
-import img from "../../../assets/images/travel-concept-with-baggage-passport.jpg";
 const ProfilePage = () => {
   return (
     <main className="bg-laggauage bg-cover h-screen bg-blend-multiply bg-black/40 text-white">

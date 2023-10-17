@@ -2,10 +2,8 @@ import clsx from "clsx";
 import { capitalize } from "lodash";
 
 const Row = ({ data, hasAction, render, tableClass }) => {
-  const columnCount = Object.keys(data[0]).length;
   const headerColumns = Object.keys(data[0]);
 
-  console.log({ columnCount, headerColumns });
   return (
     <table className={`block w-full px-3 ${clsx(tableClass && tableClass)}`}>
       <thead className="block  w-full text-left">
@@ -27,7 +25,7 @@ const Row = ({ data, hasAction, render, tableClass }) => {
           )}
         </tr>
       </thead>
-      <tbody className="block w-full text-left">
+      <tbody className="block w-full text-left text-black">
         {data.map((row, index) => (
           <tr
             key={index}
@@ -45,7 +43,7 @@ const Row = ({ data, hasAction, render, tableClass }) => {
                   key={column}
                 >
                   {typeof row[column] === "object"
-                    ? row[column]?.flightNumber ?? row[column]?.id
+                    ? capitalize(row[column]?.flightName) ?? row[column]?.id
                     : column === "id" || column === "status"
                     ? row[column]
                       ? "Booked"

@@ -7,7 +7,10 @@ const AdminProfilePage = () => {
         sectionClass="flex justify-between p-4"
         title="Admin Profile"
       />
-      <ProfileCard />
+      <ProfileCard
+        sectionClass="p-5 h-[calc(100vh-170px)]"
+        containerClass="h-[calc(100%-80px)] bg-gray-400/20 shadow rounded-md items-center px-10"
+      />
     </main>
   );
 };

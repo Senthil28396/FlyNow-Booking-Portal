@@ -33,13 +33,13 @@ const PassengerLoginPage = () => {
                 label={"email"}
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 bg-gray-200"
                 name="email"
               />
               <AppInput
                 label={"password"}
                 required
-                className="h-10 rounded-sm px-2 focus:outline-indigo-500"
+                className="h-10 rounded-sm px-2 focus:outline-indigo-500 bg-gray-200"
                 divClassName="flex flex-col  h-[100px] gap-2 "
                 name="password"
                 type="password"
